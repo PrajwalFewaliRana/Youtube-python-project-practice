@@ -1,13 +1,36 @@
-import random
+import random 
 
-top_of_range = input("Enter a number:")
+top_of_range = input("Enter a maximum number:")
 
-if top_of_range.isdigit():
-    top_of_range=int(top_of_range)
-    if top_of_range<=0:
-        print("Please enter number greater than or equal to zero.")
+if(top_of_range.isdigit()):
+    top_of_range = int(top_of_range)
+    if(top_of_range<=0):
+        print("Please enter number greater than 0 next tiime")
         quit()
 else:
-    print("Please Enter number not string")
+    print("Plese enter number next time.")
     quit()
-print(random.randrange(1,5))
+    
+random_number = random.randint(0,top_of_range)
+     
+
+guesses =0
+while True:
+    guesses += 1
+    user_guess = input("Make a guess: ")
+    if(user_guess.isdigit()):
+        user_guess = int(user_guess)
+
+    else:
+        print("Plese enter number next time.")
+        continue #go back to the top of the loop
+    
+    if user_guess == random_number:
+        print("You got it!")
+        break
+    elif user_guess > random_number:
+        print("You were above the number")
+    else:
+        print("You were below the number")
+
+print("You got it in",guesses,"guesses")
